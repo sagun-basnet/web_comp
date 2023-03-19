@@ -1,30 +1,37 @@
 <?php
-  $host="localhost";
-  $user="root";
-  $password="";
-  $db="web_comp";
+  include 'connect.php';
 
-  mysql_connect($host,$user,$password);
-  mysql_select_db($db);
 
-  if(isset($_POST['uname'])){
+  if(isset($_POST['submit'])){
     $uname=$_POST['uname'];
     $password=$_POST['pass'];
+    $type = $_POST['type'];
 
-    $sql = "select * from login where name='".$uname."' AND password='".$password."' limit 1";
+    $sql = "select * from login where name='$uname' AND password='$password' AND type='$type' ";
 
-    $result=mysql_query($sql);
+    $result=mysqli_query($conn,$sql);
 
-    if(mysql_num_rows($result)==1){
-      echo "You have successfully Logged in";
+    if(mysqli_num_rows($result)){
+      if($type==="student"){
+        header('location:user.php');
+      }
+      else if($type==="admin"){
+        header('location:./CURD/display.php');
+      }
+      else{
+        header('location:teacher.php');
+      }
+
       exit();
     }
     else{
-      echo "You Have Enter incorrect password";
+      echo "You Have Enter incorrect username or password";
       exit();
     }
   }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,33 +65,33 @@
 </head>
 <body>
   <div class="login_div">
-    <form action="./user.html" method="POST" id="login"> 
+    <form action="" method="POST" id="login"> 
       <div class="btn_close">
         <i class="uil uil-times"></i>
       </div>
       <h2>Login</h2>
       <div class="nameDiv">
         <label for="">User Name</label>
-        <input placeholder="" type="text" name="uname" id="uname">
+        <input placeholder="" type="text" name="uname" id="uname" require>
       </div>
       <div class="passDiv">
         <label for="">Password</label>
-        <input type="password" name="pass" id="pass">
+        <input type="password" name="pass" id="pass" require>
       </div>
       <div class="select">
-        <select>
+        <select require name="type">
           <option selected="selected">-who are you-</option>
-          <option>Student</option>
-          <option>Teacher</option>
-          <option>HOD</option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+          <option value="admin">admin</option>
         </select>
       </div>
       <div class="btn_login">
-        <input type="submit" value="Login" id="btn">
+        <input type="submit" value="Login" id="btn" name="submit">
       </div>
       <br>
       <div class="para">
-          <p>Don't have an account? <a href="#">Request here!</a></p> 
+          <p>Don't have an account? <a href="./regForm.php">Request here!</a></p> 
       </div>
       
   </form>
@@ -92,47 +99,14 @@
   </div>
 
 
+    
 
-
-
-  <!-- <form action="" id="login_button">
-    <h2>Login</h2>
-    <div class="nameDiv">
-      <label for="">User Name</label>
-      <input type="text" name="userName" id="name">
-    </div>
-    <div class="passDiv">
-      <label for="">Password</label>
-      <input type="password" name="pass" id="pass">
-    </div>
-    <div class="select">
-      <select>
-        <option selected="selected">-who are you-</option>
-        <option>Student</option>
-        <option>Teacher</option>
-        <option>HOD</option>
-      </select>
-    </div>
-    <div class="btn_login">
-      <input type="submit" value="Login" id="btn">
-    </div>
-    <br>
-    <div class="para">
-        <p>Don't have an account? <a href="#">Request here!</a></p> 
-    </div>
-    <div class="close">
-      <i class="fa fa-close">
-    </div>
-  </form> -->
 
   
-<!-- < onload="pre_loading()"> -->
-<!-- <div id="preloader">
-</div> -->
 
 
 
-    <!-- ===========================for Navbar=========================== -->
+    <!-- ===========================for Navbar =========================== -->
 <nav class="">
       <div class="logo">
         <a class="nav_logo" href="index.html" style="text-decoration: none !important;"><img src="IMG/logo.png" alt="gyandarpan Academy logo" > GDA</a>
