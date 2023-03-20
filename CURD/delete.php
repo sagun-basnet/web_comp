@@ -3,7 +3,7 @@
     if(isset($_GET['deleteid'])){
         $id=$_GET['deleteid'];
 
-        $sql="delete from `registration` where id=$id";
+        $sql="delete from `registered` where id=$id";
         $result = mysqli_query($conn,$sql);
         if($result){
             

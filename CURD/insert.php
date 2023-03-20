@@ -21,7 +21,7 @@
             exit();
         }
     
-        $sql = "INSERT INTO `registration`(`name`, `email`, `password`, `address`, `gender`, `contact`, `parent_name`, `parent_contact`, `faculty`) VALUES ('$fname $lname','$email','$pass','$address','$gender','$contact','$pname','$pcontact','$faculty')";
+        $sql = "INSERT INTO `registered`(`name`, `email`, `password`, `address`, `gender`, `contact`, `parent_name`, `parent_contact`, `faculty`) VALUES ('$fname $lname','$email','$pass','$address','$gender','$contact','$pname','$pcontact','$faculty')";
     
         if(mysqli_query($conn,$sql)){
             header('location:display.php');

@@ -97,6 +97,7 @@ h2{
 a{
     transition: var(--transistion);
     text-decoration: none;
+    cursor: pointer;
 }
 p{
     color: rgb(193, 193, 193);
@@ -1546,7 +1547,7 @@ form .close:hover{
 }
 #login{
     box-shadow: 1px 1px 20px 5px rgba(0, 0, 0, 1);
-    width: 30rem;
+    width: 28rem;
     height: 26rem;
     padding: 1.8rem;
     /* text-align: center; */
@@ -1565,16 +1566,23 @@ form .close:hover{
     display: flex !important;
 }
 #login .nameDiv,.passDiv{
+    /* border: 2px solid white; */
     width: 100%;
+    display: flex;
+    align-items: center;
 }
 #login .select{
+    /* border: 2px solid white; */
     margin-top: 1.8rem;
-    width: 48%;
+    width: 100%;
 }
 #login select, #login select option{
     height: 1.8rem;
+    width: 10rem;
     font-size: 1.1rem;
     border-radius: 1rem;
+    margin-left: 1.9rem;
+    text-align: center;
 }
 #login .btn_login{
     width: 100%;
@@ -1599,17 +1607,14 @@ form .close:hover{
 }
 #login input{
     margin-left: 2rem;
-    width: 70%;
+    width: 80%;
     margin-top: 1.6rem;
 }
-#login input[type="text"],#login input[type="password"]{
+#login input[type="email"],#login input[type="password"]{
     padding: 0.05rem 0.8rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.2rem;
     border-radius: 1rem;
-}
-#login #pass{
-    margin-left: 2.7rem;
 }
 #login #btn{
     width: 6rem;

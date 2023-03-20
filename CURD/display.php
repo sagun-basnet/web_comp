@@ -1,9 +1,11 @@
 <?php
     include '../connect.php';
+    include 'head.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +13,8 @@
 
     <link rel="stylesheet" href="../CSS/curd.css">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" /> -->
 
     <!-- link for iconscout CDN -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -30,31 +32,39 @@
                 </div>
                 <div class="search_container">
                     <i class="uil uil-search"></i>
-                    <input id="searchId" type="search" placeholder="Enter user id">
-                    <button class="search">Search</button>
+                    <input id="searchId" type="search" name="searchbox" placeholder="Enter Name">
+                    <!-- <a href="search.php"><button name="search" class="search">Search</button></a> -->
+                    <button name="search" class="search">Search</button>
                 </div>
             </div>
             <div class="bottom_container">
                 <div class="table_container">
-                    <table>
+                    <table class="table" id="myTable">
                         <thead>
                             <tr>
-                                <th class="sn">SN</th>
-                                <th class="name">Name</th>
-                                <th class="email">Email</th>
-                                <th class="pass">Password</th>
-                                <th class="address">Address</th>
-                                <th class="gender">Gender</th>
-                                <th class="contact">Contact</th>
-                                <th class="action">Action</th>
+                                <th scope="col">SN</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Gender</th>
+                                <th  scope="col">Contact</th>
+                                <th  scope="col">Action</th>
                             </tr>
+                            
                         </thead>
                         <tbody id="table-data">
                             <?php
-                                $sql = "Select * from `registration`";
+                                $sql = "Select * from `registered` ORDER BY name ASC";
                                 $result=mysqli_query($conn,$sql);
                                 $index=0;
+                                
                                 if($result){
+                                    if(isset($_POST['search'])){
+                                        $search=$_POST['search'];
+                                        $searchtext=$_POST['searchbox'];
+                                        echo "$searchtext";
+                                    }
                                     while($row = mysqli_fetch_assoc($result)){
                                         $id=$row['id'];
                                         $name=$row['name'];
@@ -81,12 +91,25 @@
 ?>
                         </tbody>
                     </table>
+                    <div id="noData" class="noData">
+                            <h4>Sorry, No data found</h4>
+                        </div>
                 </div>
             </div>
         </div>
+        <footer >
+            <h4>Copyright &copy; <?php echo date('Y') ?> Astra</h4>
+            
+        </footer>
     </main>
     <!-- link for sweet alert -->
     <script src="../js/sweetalert.min.js"></script>
+
+    <script src="assets/js/vendor/jquery-2.1.4.min.js" type="text/javascript"></script>
+      <script src="assets/js/popper.min.js" type="text/javascript"></script>
+      <script src="assets/js/plugins.js" type="text/javascript"></script>
+      <script src="assets/js/main.js" type="text/javascript"></script>
+      <script src="../js/search.js" type="text/javascript"></script>
 </body>
 
 </html>

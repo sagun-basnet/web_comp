@@ -7,18 +7,20 @@
     $password=$_POST['pass'];
     $type = $_POST['type'];
 
-    $sql = "select * from login where name='$uname' AND password='$password' AND type='$type' ";
+    $sql = "select * from `login` where email='{$uname}' AND password='{$password}' AND type='{$type}'";
 
     $result=mysqli_query($conn,$sql);
 
     if(mysqli_num_rows($result)){
-      if($type==="student"){
+      $row= mysqli_fetch_assoc($result);
+
+      if($type==="Student"){
         header('location:user.php');
       }
       else if($type==="admin"){
         header('location:./CURD/display.php');
       }
-      else{
+      else if($type ==="teacher"){
         header('location:teacher.php');
       }
 
@@ -71,17 +73,17 @@
       </div>
       <h2>Login</h2>
       <div class="nameDiv">
-        <label for="">User Name</label>
-        <input placeholder="" type="text" name="uname" id="uname" require>
+        <!-- <label for="">Email</label> -->
+        <input placeholder="Enter email" type="email" name="uname" id="uname" require>
       </div>
       <div class="passDiv">
-        <label for="">Password</label>
-        <input type="password" name="pass" id="pass" require>
+        <!-- <label for="">Password</label> -->
+        <input type="password" name="pass" id="pass" placeholder="Enter password" require>
       </div>
       <div class="select">
         <select require name="type">
-          <option selected="selected">-who are you-</option>
-          <option value="student">Student</option>
+          <option selected disabled hidden>-Select Role-</option>
+          <option value="Student">Student</option>
           <option value="teacher">Teacher</option>
           <option value="admin">admin</option>
         </select>

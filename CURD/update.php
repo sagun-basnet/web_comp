@@ -1,7 +1,7 @@
 <?php
     include '../connect.php';
     $id=$_GET['updateid'];
-    $sql = "SELECT * from `registration` where id=$id";
+    $sql = "SELECT * from `registered` where id=$id";
     $result=mysqli_query($conn,$sql);
     $row=mysqli_fetch_assoc($result);
     $name=$row['name'];
@@ -31,7 +31,7 @@
         $pass = $_POST["pass"];
         $rpass = $_POST["rpass"];
 
-        $sql = "UPDATE `registration` SET `id`=$id,`name`='$fname $lname',`email`='$email',`password`='$pass',`address`='$address',`gender`='$gender',`contact`='$contact',`parent_name`='$pname',`parent_contact`='$pcontact',`faculty`='$faculty' where id=$id";
+        $sql = "UPDATE `registered` SET `id`=$id,`name`='$fname $lname',`email`='$email',`password`='$pass',`address`='$address',`gender`='$gender',`contact`='$contact',`parent_name`='$pname',`parent_contact`='$pcontact',`faculty`='$faculty' where id=$id";
     
         if(mysqli_query($conn,$sql)){
             
