@@ -1,23 +1,10 @@
-<?php
-// require('connection.inc.php');
-// require('function.inc.php');
-// if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN']!=''){
-
-// }else{
-//     header('location:login.php');
-//       die();
-// }
-?>
-<!doctype html>
-<html class="no-js" lang="">
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>Dashboard Page</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="assets/css/normalize.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/normalize.css">
    <link rel="stylesheet" href="../CSS/curd.css">
    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -28,58 +15,70 @@
    <link rel="stylesheet" href="assets/css/style.css">
    <link rel="stylesheet" href="assets/css/fstyle.css"> 
    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- link for iconscout CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Dashboard</title>
 </head>
-
 <body>
-   <aside id="left-panel" class="left-panel">
-      <nav class="navbar navbar-expand-sm navbar-default">
-         <div id="main-menu" class="main-menu collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-               <li class="menu-title">Menu</li>
-               <li class="menu-item-has-children dropdown">
-                  <a href="display.php"> Student</a>
-               </li>
-               <li class="menu-item-has-children dropdown">
-                  <a href="DisplayTeacher.php">Teacher</a>
-               </li>
-               <li class="menu-item-has-children dropdown">
-                  <a href="#"> Courses and syllabus</a>
-               </li>
-               <li class="menu-item-has-children dropdown">
-                  <a href="#"> Classes</a>
-               </li>
-               <li class="menu-item-has-children dropdown">
-                  <a href="contact_us.php"> Contact Us</a>
-               </li>
-               <li class="menu-item-has-children dropdown">
-                  <a href="#"> Result</a>
-               </li>
-               <li class="menu-item-has-children dropdown">
-                  <a href="request.php"> Request</a>
-               </li>
-
+        <header>
+            <div class="logo">
+                <a href="display.php"><h2>Gyandarpan Academy</h2></a>
+                
+            </div>
+            <div class="side">Welcom Admin &nbsp;<ion-icon name="chevron-down-outline"></ion-icon></div>
+        </header>
+        <div class="navigation">
+            <div class="icon">
+                <i class="uil uil-align-justify toggle"></i>
+            </div>
+            <ul>
+                <li>
+                    <a href="#">
+                        <h2><span class="title"> MENU</span></h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="display.php">
+                        <span class="title">Student</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="DisplayTeacher.php">
+                        <span class="title">Teacher</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="title">Courses and syllabus</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="title">Classes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="title">Result</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="request.php">
+                        <span class="title">Request</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="title">Change password</span>
+                    </a>
+                </li>
             </ul>
-         </div>
-      </nav>
-   </aside>
-   <div id="right-panel" class="right-panel">
-      <header id="header" class="header">
-         <div class="top-left">
-            <div class="navbar-header">
-               <!-- <a class="navbar-brand" href="display.php"><img src="assets/images/slogo.png" alt="Logo"></a> -->
-               <a class="navbar-brand" href="display.php"><h4>Gyandarpan Academy</h4></a>
-               <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
-            </div>
-         </div>
-         <div class="top-right">
-            <div class="header-menu">
-               <div class="user-area dropdown float-right">
-                  <div class="user-menu dropdown-menu">
-                     <a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i>Logout</a>
-                  </div>
-                  <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome Admin</a>
-               </div>
-            </div>
-         </div>
-      </header>
-      
+        </div>
+        <main>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

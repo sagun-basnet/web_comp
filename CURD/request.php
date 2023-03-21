@@ -23,7 +23,6 @@
 </head>
 
 <body>
-    <main>
         <div class="main_body">
             <div class="top_container">
                 <!-- <div class="top_btn">
@@ -101,7 +100,7 @@
     </main>
     <!-- link for sweet alert -->
     <script src="../js/sweetalert.min.js"></script>
-
+    <script src="main.js"></script>
     <script src="assets/js/vendor/jquery-2.1.4.min.js" type="text/javascript"></script>
       <script src="assets/js/popper.min.js" type="text/javascript"></script>
       <script src="assets/js/plugins.js" type="text/javascript"></script>

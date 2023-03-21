@@ -22,16 +22,8 @@ body{
 button{
     cursor: pointer !important;
 }
-main{
-    padding-top: 2rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
 main footer{
-    border-top: 2px solid rgba(44, 44, 44, 0.6);
+    border-top: 2px solid rgb(154, 154, 154);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -82,11 +74,11 @@ main footer h4{
     background: transparent;
     height: 2.6rem;
     border: none;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #fff;
     border-radius: 0.4rem;
     padding: 1.2rem;
     margin-right: 1rem;
-    color: #000;
+    color: #fff;
     font-size: 1.2rem;
     font-weight: bolder;
     text-align: center;
@@ -114,9 +106,13 @@ main footer h4{
     justify-content: center;
     margin-top: 3rem;
 }
+table th,h4{
+    color: #fff;
+}
 table td{
     font-size: 1.1rem;
     vertical-align: middle !important;
+    color: #fff;
     /* display: flex; */
     /* flex-direction: row; */
     /* align-self: center; */
@@ -176,4 +172,37 @@ aside nav ul .menu-title{
     color: #8f8d8d;
     margin-bottom: 2rem;
     display: none;
+}
+.change_container{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid red; */
+}
+.inputsDiv{
+    border: 2px solid #000;
+    border-radius: 1.6rem;
+    padding: 1.2rem;
+    width: 20rem;
+    height: 18rem;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
+.inputsDiv h2{
+    color: #c5c5c5;
+}
+.inputsDiv .inputs{
+    margin-top: 2rem;
+    /* border: 2px solid red; */
+    padding: 1rem;
+}
+.inputsDiv .inputs input{
+    margin-top: 1rem;
+    border-radius: 0.6rem;
+    width: 100%;
+    padding: 0 1.6rem;
 }
