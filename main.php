@@ -13,15 +13,16 @@
 
     if(mysqli_num_rows($result)){
       $row= mysqli_fetch_assoc($result);
+      $id=$row['id'];
 
       if($type==="Student"){
-        header('location:user.php');
+        header("location:user.php?userid='.$id.'");
       }
       else if($type==="admin"){
-        header('location:./CURD/display.php');
+        header("location:./CURD/display.php?userid='.$id.'");
       }
       else if($type ==="teacher"){
-        header('location:teacher.php');
+        header("location:teacher.php?userid='.$id.'");
       }
 
       exit();

@@ -48,6 +48,8 @@
                                 <th scope="col">Address</th>
                                 <th scope="col">Gender</th>
                                 <th  scope="col">Contact</th>
+                                <th  scope="col">Faculty</th>
+                                <th  scope="col">Sem</th>
                                 <th  scope="col">Action</th>
                             </tr>
                             
@@ -71,6 +73,8 @@
                                         $address=$row['address'];
                                         $gender=$row['gender'];
                                         $contact=$row['contact'];
+                                        $faculty=$row['faculty'];
+                                        $sem=$row['semester'];
                                         echo '<tr>
                                             <td>'.++$index.'</td>
                                             <td>'.$name.'</td>
@@ -78,6 +82,8 @@
                                             <td>'.$address.'</td>
                                             <td>'.$gender.'</td>
                                             <td>'.$contact.'</td>
+                                            <td>'.$faculty.'</td>
+                                            <td>'.$sem.'</td>
                                             <td class="td_btn">
                                                 <a href="accept.php?id='.$id.'"><button class="view"><i class="uil uil-user-check"></i></button></a>
                                             </td>
@@ -89,7 +95,7 @@
                     </table>
                     <div id="noData" class="noData">
                             <h4>Sorry, No data found</h4>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>

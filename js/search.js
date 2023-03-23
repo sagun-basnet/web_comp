@@ -2,6 +2,11 @@
 var noData = document.querySelector("#noData");
 var tableData = document.querySelector("#table-data");
 var searchId = document.querySelector("#searchId");
+var tbody = document.querySelector('table tbody');
+var trs = tbody.querySelector('tr');
+if (getComputedStyle(trs).display === 'none') {
+  noData.style.display = 'flex';
+}
 searchId.oninput = function(){ //if output should comes after clicking button than use btn.click 
   searchFun();
 }
@@ -29,7 +34,4 @@ function searchFun(){
         noData.style.display = 'none';
     }
 }
-}
-if (getComputedStyle(trs).display === 'none') {
-  noData.style.display = 'flex';
 }

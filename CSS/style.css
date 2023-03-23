@@ -1692,6 +1692,10 @@ form .close:hover{
     width: auto;
     height: 1.8rem;
 }
+#reg_formDiv .faculty{
+    display: flex;
+    justify-content: space-between;
+}
 #reg_formDiv form select{
     width: 40%;
     border-radius: 1.8rem;

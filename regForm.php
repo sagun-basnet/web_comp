@@ -9,6 +9,7 @@
         $pname = $_POST["pname"];
         $pcontact = $_POST["pcontact"];
         $faculty = $_POST["faculty"];
+        $sem = $_POST["semester"];
         $email = $_POST["email"];
         $pass = $_POST["pass"];
         $rpass = $_POST["rpass"];
@@ -19,7 +20,7 @@
         exit();
     }
 
-    $sql = "INSERT INTO `registration`(`name`, `email`, `password`, `address`, `gender`, `contact`, `parent_name`, `parent_contact`, `faculty`) VALUES ('$fname $lname','$email','$pass','$address','$gender','$contact','$pname','$pcontact','$faculty')";
+    $sql = "INSERT INTO `registration`(`name`, `email`, `password`, `address`, `gender`, `contact`, `parent_name`, `parent_contact`, `faculty`, `semester`) VALUES ('$fname $lname','$email','$pass','$address','$gender','$contact','$pname','$pcontact','$faculty','$sem')";
 
     if(mysqli_query($conn,$sql)){
         header('location:regInfo.php');
@@ -75,11 +76,23 @@
             </div>
             <div class="faculty">
                 <select name="faculty" id="">
-                    <option value="" selected="selected">--Select Faculty--</option>
+                    <option value="" selected disabled hidden>--Select Faculty--</option>
                     <option value="BCA">BCA</option>
-                    <option value="BBA">BBA</option>
-                    <option value="BBS">BBS</option>
+                    <option value="BHM">BHM</option>
                     <option value="BSW">BSW</option>
+                    <option value="BBS">BBS</option>
+                    <option value="BBA">BBA</option>
+                </select>
+                <select name="semester" id="">
+                    <option value="" selected disabled hidden>--Select Semester--</option>
+                    <option value="1st">First</option>
+                    <option value="2nd">Second</option>
+                    <option value="3rd">Third</option>
+                    <option value="4th">Forth</option>
+                    <option value="5th">Fifth</option>
+                    <option value="6th">Sixth</option>
+                    <option value="7th">Seventh</option>
+                    <option value="8th">Eigth</option>
                 </select>
             </div>
             <div class="email">
@@ -93,55 +106,6 @@
 
             <input id="btn" class="send" name="submit" type="submit" value="sign up">
         </form>
-
-        <!-- ==================================bootstrap form============================================== -->
-        <!-- <form>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputEmail4">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputPassword4">Password</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputAddress">Address</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                </div>
-                <div class="form-group">
-                    <label for="inputAddress2">Address 2</label>
-                    <input type="text" class="form-control" id="inputAddress2"
-                        placeholder="Apartment, studio, or floor">
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCity">City</label>
-                        <input type="text" class="form-control" id="inputCity">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputState">State</label>
-                        <select id="inputState" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>...</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="inputZip">Zip</label>
-                        <input type="text" class="form-control" id="inputZip">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                            Check me out
-                        </label>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
-            </form> -->
     </div>
 </body>
 

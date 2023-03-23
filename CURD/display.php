@@ -10,10 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../CSS/curd.css">
-
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" /> -->
-
     <!-- link for iconscout CDN -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
@@ -43,10 +39,11 @@
                                 <th scope="col">SN</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Password</th>
+                                <!-- <th scope="col">Password</th> -->
                                 <th scope="col">Address</th>
                                 <th scope="col">Gender</th>
                                 <th  scope="col">Contact</th>
+                                <th  scope="col">Faculty</th>
                                 <th  scope="col">Action</th>
                             </tr>
                             
@@ -67,6 +64,7 @@
                                         $id=$row['id'];
                                         $name=$row['name'];
                                         $email=$row['email'];
+                                        $faculty=$row['faculty'];
                                         $pass=$row['password'];
                                         $address=$row['address'];
                                         $gender=$row['gender'];
@@ -75,10 +73,10 @@
                                             <td>'.++$index.'</td>
                                             <td>'.$name.'</td>
                                             <td>'.$email.'</td>
-                                            <td>'.$pass.'</td>
                                             <td>'.$address.'</td>
                                             <td>'.$gender.'</td>
                                             <td>'.$contact.'</td>
+                                            <td>'.$faculty.'</td>
                                             <td class="td_btn">
                                                 <a href="update.php?updateid='.$id.'"><button class="view"><i class="uil uil-edit"></i></button></a>
                                                 <a href="delete.php?deleteid='.$id.'"><button class="delete"><i class="uil uil-trash-alt"></i></button></a>
@@ -86,11 +84,11 @@
                                         </tr>';
                                     }
                                 }
-?>
+                        ?>
                         </tbody>
                     </table>
                     <div id="noData" class="noData">
-                            <h4>Sorry, No data found</h4>
+                            <h4 style="color: #8f8d8d;">Sorry, No data found</h4>
                         </div>
                 </div>
             </div>
@@ -104,9 +102,9 @@
     <script src="../js/sweetalert.min.js"></script>
     <script src="main.js"></script>
 
-    <script src="assets/js/vendor/jquery-2.1.4.min.js" type="text/javascript"></script>
-      <script src="assets/js/popper.min.js" type="text/javascript"></script>
-      <script src="assets/js/plugins.js" type="text/javascript"></script>
+    <!-- <script src="assets/js/vendor/jquery-2.1.4.min.js" type="text/javascript"></script> -->
+      <!-- <script src="assets/js/popper.min.js" type="text/javascript"></script> -->
+      <!-- <script src="assets/js/plugins.js" type="text/javascript"></script> -->
       <script src="assets/js/main.js" type="text/javascript"></script>
       <script src="../js/search.js" type="text/javascript"></script>
 </body>

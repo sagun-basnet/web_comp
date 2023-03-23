@@ -27,6 +27,7 @@
         $pname = $_POST["pname"];
         $pcontact = $_POST["pcontact"];
         $faculty = $_POST["faculty"];
+        $sem = $_POST["semester"];
         $email = $_POST["email"];
         $pass = $_POST["pass"];
         $rpass = $_POST["rpass"];
@@ -70,11 +71,11 @@
 
             <div class="gender">
                 Gender:
-                &nbsp;<input type="radio" name="gender" id="male" value="male">male
+                &nbsp;<input type="radio" name="gender" id="male" value="male"<?php if($gender=="male"){echo "checked";} ?>>male
                 &nbsp; &nbsp;
-                <input type="radio" name="gender" id="female" value="female">Female
+                <input type="radio" name="gender" id="female" value="female"<?php if($gender=="female"){echo "checked";} ?>>Female
                 &nbsp; &nbsp;
-                <input type="radio" name="gender" id="others" value="others">others
+                <input type="radio" name="gender" id="others" value="others" <?php if($gender=="others"){echo "checked";} ?>>others
             </div>
             <div class="contact">
                 <input type="number" placeholder="Enter contact no" name="contact" value="<?php echo $contact?>">
@@ -85,11 +86,23 @@
             </div>
             <div class="faculty">
                 <select name="faculty" id="">
-                    <option value="" selected="selected">--Select Faculty--</option>
-                    <option value="BCA">BCA</option>
-                    <option value="BBA">BBA</option>
-                    <option value="BBS">BBS</option>
-                    <option value="BSW">BSW</option>
+                    <option selected disabled hidden>--Select Faculty--</option>
+                    <option value="BCA" <?php if($faculty=="BCA"){echo "selected";} ?>>BCA</option>
+                    <option value="BHM" <?php if($faculty=="BHM"){echo "selected";} ?>>BHM</option>
+                    <option value="BBA" <?php if($faculty=="BBA"){echo "selected";} ?>>BBA</option>
+                    <option value="BBS" <?php if($faculty=="BBS"){echo "selected";} ?>>BBS</option>
+                    <option value="BSW" <?php if($faculty=="BSW"){echo "selected";} ?>>BSW</option>
+                </select>
+                <select name="semester" id="">
+                    <option value="" selected disabled hidden>--Select Semester--</option>
+                    <option value="1st" <?php if($sem=="1st"){echo "selected";} ?>>First</option>
+                    <option value="2nd" <?php if($sem=="2nd"){echo "selected";} ?>>Second</option>
+                    <option value="3rd" <?php if($sem=="3rd"){echo "selected";} ?>>Third</option>
+                    <option value="4th" <?php if($sem=="4th"){echo "selected";} ?>>Forth</option>
+                    <option value="5th" <?php if($sem=="5th"){echo "selected";} ?>>Fifth</option>
+                    <option value="6th" <?php if($sem=="6th"){echo "selected";} ?>>Sixth</option>
+                    <option value="7th" <?php if($sem=="7th"){echo "selected";} ?>>Seventh</option>
+                    <option value="8th" <?php if($sem=="8th"){echo "selected";} ?>>Eigth</option>
                 </select>
             </div>
             <div class="email">

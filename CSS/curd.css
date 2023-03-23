@@ -4,7 +4,15 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 }
 /* =============================================================== */
 :root{
+    --hoverColor: rgb(213, 0, 213);
     --transistion: all 400ms ease;
+    --bg-color-1:  #0F2027;
+    --bg-color-2:  #132227;
+    --bg-color-3:  #162931;
+    --special-color: #15DBFB;
+    --transistion: all 200ms ease;
+    --white-color: rgb(236, 234, 234);
+    --black-color: #000000;
 }
 *{
     padding: 0;
@@ -16,8 +24,9 @@ i{
 }
 body{
     /* z-index: 100; */
-    background: #fff;  /* fallback for old browsers */
+    background: #ffffffcc;  /* fallback for old browsers */
     /* background: linear-gradient(to right,#0F2027,#132227,#162931); */
+    overflow-y: hidden;
 }
 button{
     cursor: pointer !important;
@@ -33,6 +42,9 @@ main footer{
 main footer h4{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+#searchId{
+    color: #ffffffcc !important;
+}
 .main_body{
     height: 100%;
     width: 100%;
@@ -43,7 +55,7 @@ main footer h4{
 }
 .top_container{
     height: 20%;
-    width: 90%;
+    width: 96%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -74,11 +86,11 @@ main footer h4{
     background: transparent;
     height: 2.6rem;
     border: none;
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid #ffffffcc;
     border-radius: 0.4rem;
     padding: 1.2rem;
     margin-right: 1rem;
-    color: #fff;
+    color: #ffffffcc;
     font-size: 1.2rem;
     font-weight: bolder;
     text-align: center;
@@ -93,7 +105,7 @@ main footer h4{
     height: 2.4rem;
     width: 5rem;
     background-color: #0D1F2D;
-    color: #fff;
+    color: #ffffffcc;
     font-size: 1rem;
     border: none;
     border-radius: 0.4rem;
@@ -101,18 +113,18 @@ main footer h4{
 
 .bottom_container{
     height: 80%;
-    width: 90%;
+    width: 96%;
     display: flex;
     justify-content: center;
     margin-top: 3rem;
 }
 table th,h4{
-    color: #fff;
+    color: #15dcfbd5;
 }
 table td{
     font-size: 1.1rem;
     vertical-align: middle !important;
-    color: #fff;
+    color: #ffffffcc;
     /* display: flex; */
     /* flex-direction: row; */
     /* align-self: center; */
@@ -150,11 +162,11 @@ table td{
     gap: 1.2rem;
 }
 .delete i{
-    color: #fff;
+    color: #ffffffcc;
     font-size: 1.8rem;
 }
 .view i{
-    color: #fff;
+    color: #ffffffcc;
     font-size: 1.8rem;
 }
 
@@ -182,27 +194,207 @@ aside nav ul .menu-title{
     /* border: 2px solid red; */
 }
 .inputsDiv{
-    border: 2px solid #000;
+    /* border: 2px solid #000; */
+    box-shadow: 1px 1px 16px 4px #000;
     border-radius: 1.6rem;
     padding: 1.2rem;
-    width: 20rem;
-    height: 18rem;
+    width: 22rem;
+    height: 24rem;
     display: flex;
     /* justify-content: center; */
     align-items: center;
     flex-direction: column;
 }
+.inputsDiv .current{
+    margin-top: 0.8rem !important;
+}
 .inputsDiv h2{
-    color: #c5c5c5;
+    color: #15DBFB;
+    font-weight: bolder;
 }
 .inputsDiv .inputs{
-    margin-top: 2rem;
-    /* border: 2px solid red; */
+    margin-top: -1rem;
     padding: 1rem;
 }
-.inputsDiv .inputs input{
+.inputsDiv .inputs input[type='password'],.inputsDiv .inputs input[type='email']{
     margin-top: 1rem;
     border-radius: 0.6rem;
     width: 100%;
     padding: 0 1.6rem;
+    text-align: center;
+}
+#cadd{
+    width: 5rem;
+    height: 2rem;
+    border-radius: 0.6rem;
+    background-color: #15DBFB;
+    color: #000;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.inputsDiv .change_button{
+    margin-top: 1rem;
+    width: 100%;
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#cadd:hover{
+    transition: var(--transistion);
+    background-color: transparent;
+    border: 2px solid #15DBFB;
+    color: #15DBFB;
+}
+::placeholder { 
+    color: #8f8d8d;
+    opacity: 1;
+}
+/* #searchId::placeholder {color: #8f8d8d; opacity: 1;} */
+
+/* for Faculty */
+.facultyContainer{
+    transition: var(--transistion);
+    width: 100%;
+    /* border: 2px solid white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.divTop{
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -1.6rem;
+    /* background-color: var(--bg-color-1); */
+}
+.divTop .facBtn{
+    border-bottom: 2px solid white;
+    border-radius: 1.2rem;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* gap: 2rem; */
+}
+.divTop .facBtn .btn{
+    width: 4rem;
+    height: 2.2rem;
+    background-color: #14ffec;
+    border-radius: 0.6rem;
+    font-size: 0.9rem;
+    font-weight: bolder;
+    color: var(--black-color);
+}
+.divTop .facBtn .btn:hover{
+    transition: var(--transistion);
+    /* width: 4.6rem; */
+    height: 2.8rem;
+    background-color: transparent;
+    border: 2px solid #14ffec;
+    color: var(--special-color);
+    font-size: 1rem;
+}
+.divTop .facBtn .on{
+    width: 4.6rem;
+    height: 2.8rem;
+    background-color: transparent;
+    border: 2px solid #14ffec;
+    color: var(--special-color);
+    font-size: 1rem;
+}
+.divMiddle{
+    margin-top: 2rem;
+    width: 96%;
+    /* padding: 1.6rem; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.divMiddle form select{
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid var(--white-color);
+    border-radius: 0.8rem;
+    text-align: center;
+    width: 12rem;
+    font-weight: bolder;
+    color: var(--white-color);
+}
+.divMiddle form select option{
+    background-color: #1a1919;
+    border: 2px solid var(--white-color);
+}
+.divMiddle h3{
+    color: var(--white-color);
+    font-weight: bolder;
+}
+.divMiddle .search_container{
+    /* width: 100%; */
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.divMiddle .search_container input{
+    width: 16rem;
+    background: transparent;
+    height: 2.6rem;
+    border: none;
+    border-bottom: 2px solid #ffffffcc;
+    border-radius: 0.4rem;
+    padding: 1.2rem;
+    margin-right: 1rem;
+    color: #ffffffcc;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-align: center;
+}
+.divMiddle .search_container i{
+    font-size: 2rem;
+    color: rgb(131, 131, 131);
+    font-weight: bolder;
+    margin-right: 0.6rem;
+}
+.divMiddle .search_container button{
+    height: 2.4rem;
+    width: 5rem;
+    background-color: #0D1F2D;
+    color: #ffffffcc;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.4rem;
+}
+.bca{
+    display: none;
+}
+.display{
+    display: flex !important;
+}
+.bbs{
+    display: none;
+}
+.display{
+    display: flex;
+}
+.bhm{
+    display: none;
+}
+.display{
+    display: flex;
+}
+.bsw{
+    display: none;
+}
+.display{
+    display: flex;
+}
+.bba{
+    display: none;
+}
+.display{
+    display: flex;
 }
