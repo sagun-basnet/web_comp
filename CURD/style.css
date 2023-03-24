@@ -112,7 +112,7 @@ header .side{
     justify-content: center;
     gap: 0.8rem;
 }
-.navigation ul .student{
+.navigation ul .student,.navigation ul .facultylist{
     /* border: 2px solid white; */
     display: flex;
     flex-direction: column;
@@ -123,8 +123,7 @@ header .side{
     margin-left: 0rem;
     border-left: 2px solid#000;
     border-bottom: 2px solid#000;
-    /* border-radius: 4rem; */
-    /* height: 0rem; */
+    transition: var(--transistion);
     display: none;
 }
 .navigation .dropdown li:hover a{

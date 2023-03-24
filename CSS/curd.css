@@ -128,7 +128,11 @@ table td{
     /* display: flex; */
     /* flex-direction: row; */
     /* align-self: center; */
-    text-align: center;
+    text-align: left;
+}
+table .action{
+    text-align: center !important;
+
 }
 .table_container{
     width: 100%;
@@ -139,7 +143,7 @@ table td{
 .bottom_container .table_container table tr th {
     font-size: 1.3rem;
     font-weight: bolder;
-    text-align: center;
+    text-align: left;
 }
 .view, .delete{
     background-color: transparent;
@@ -397,4 +401,124 @@ aside nav ul .menu-title{
 }
 .display{
     display: flex;
+}
+.mainFacDiv{
+    /* border: 2px solid white; */
+    width: 96%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.mainFacDiv h2,.mainFacDiv h1{
+    color: var(--white-color);
+}
+.mainFacDiv .mainFacDivFac,.mainFacDiv .mainFacDivSub{
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-start !important;
+}
+.mainFacDivFac .leftDiv,.mainFacDivFac .rightDiv,.mainFacDivSub .leftDiv,.mainFacDivSub .rightDiv{
+    width: 50%;
+    display: grid;
+    place-items: center;
+}
+.mainFacDivFac .leftDiv{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: flex-start !important;
+}
+.mainFacDivFac .leftDiv .bottom_container,.mainFacDivSub .leftDiv .bottom_container{
+    height: auto;
+    margin-top: 0rem !important;
+    display: flex;
+    justify-content: flex-start;
+}
+.mainFacDivFac .leftDiv,.mainFacDivFac .rightDiv{
+    /* border: 2px solid white; */
+    width: 50%;
+    display: grid;
+    place-items: center;
+}
+.mainFacDivFac .rightDiv{
+    gap: 2rem;
+}
+.mainFacDivFac .rightDiv .addFacultyDiv{
+    box-shadow: 1px 1px 4px 5px var(--black-color);
+    border-radius: 1.6rem;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 14rem;
+}
+.mainFacDivFac .rightDiv .addFacultyDiv form{
+    margin-top: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.2rem;
+    width: 100%;
+}
+.mainFacDiv form input[type=text],.mainFacDiv form select{
+    text-align: center;
+    border-radius: 0.6rem;
+}
+.mainFacDiv form input[type=submit]{
+    border-radius: 0.6rem;
+    width: 3rem;
+    background-color: transparent;
+    border: 2px solid var(--special-color);
+    color: var(--special-color);
+    cursor: pointer;
+}
+.mainFacDiv form input[type=submit]:hover{
+    font-weight: bolder;
+}
+.mainFacDivFac .rightDiv .addSemesterDiv{
+    box-shadow: 1px 1px 4px 5px var(--black-color);
+    border-radius: 1.6rem;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 14rem;
+}
+.mainFacDivFac .rightDiv form,.mainFacDivSub .rightDiv form{
+    margin-top: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    width: 100%;
+}
+.mainFacDivFac .rightDiv .addSemesterDiv .submitBtn,.mainFacDivSub .rightDiv .submitBtn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.mainFacDivFac .rightDiv select, .mainFacDivFac .rightDiv input[type=text],.mainFacDivSub .rightDiv select, .mainFacDivSub .rightDiv input[type=text]{
+    width: 15rem;
+}
+
+.mainFacDivSub{
+    /* border: 2px solid white; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mainFacDivSub .rightDiv .addSubject{
+    box-shadow: 1px 1px 4px 5px var(--black-color);
+    border-radius: 1.6rem;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 18rem;
 }

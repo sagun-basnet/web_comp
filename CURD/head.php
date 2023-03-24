@@ -14,8 +14,6 @@
    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
    <link rel="stylesheet" href="assets/css/style.css">
    <link rel="stylesheet" href="assets/css/fstyle.css"> 
-   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-    <!-- link for iconscout CDN -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="style.css">
     <title>Dashboard</title>
@@ -34,7 +32,7 @@
             </div>
             <ul>
                 <h2><span class="title"> MENU</span></h2>
-                <li class="student dlist" onclick="dropdownlist()">
+                <li class="student dlist" onclick="dropdownlist(0)">
                     <a href="#" >
                         <span>Student <i class="uil uil-angle-down"></i></span>
                     </a>
@@ -48,10 +46,14 @@
                         <span class="title">Teacher</span>
                     </a>
                 </li>
-                <li class="list">
+                <li class="facultylist dlist" onclick="dropdownlist(1)">
                     <a href="#">
-                        <span class="title">Courses and syllabus</span>
+                        <span>Faculty and subject <i class="uil uil-angle-down"></i></span>
                     </a>
+                    <ul class="dropdown">
+                        <li><a href="addFaculty.php">Add Faculty</a></li>
+                        <li><a href="addSubject.php">Add Subject</a></li>
+                    </ul>
                 </li>
                 <li class="list">
                     <a href="#">
@@ -78,7 +80,6 @@
         <main>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="../js/dropdown.js"></script>
 </body>
 </html>

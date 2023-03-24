@@ -44,7 +44,7 @@
                                 <th scope="col">Gender</th>
                                 <th  scope="col">Contact</th>
                                 <th  scope="col">Faculty</th>
-                                <th  scope="col">Action</th>
+                                <th class="action"  scope="col">Action</th>
                             </tr>
                             
                         </thead>
