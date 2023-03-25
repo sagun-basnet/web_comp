@@ -50,8 +50,8 @@
 
                             </thead>
                             <tbody id="table-data">
-                                <?php
-                                $sql = "SELECT * from `subject`";
+                            <?php
+                                $sql = "SELECT subject.id, subject.sub_name, faculty.faculty, semester.sem_name from subject JOIN faculty on subject.fac_id = faculty.id JOIN semester on subject.sem_id = semester.id";
                                 $result=mysqli_query($conn,$sql);
                                 // $index=0;
                                 
@@ -59,25 +59,9 @@
                                     while($row = mysqli_fetch_assoc($result)){
                                         $id=$row['id'];
                                         $sname=$row['sub_name'];
-                                        $fac_id=$row['fac_id'];
-                                        $sem_id=$row['sem_id'];
-
-                                        $sql1 = "SELECT `faculty` FROM `faculty` WHERE id=$fac_id";
-                                        $result1=mysqli_query($conn,$sql1);
-                                        if(mysqli_num_rows($result1) > 0){
-                                            while($row1 = mysqli_fetch_assoc($result1)){
-                                                $fname=$row1['faculty'];
-                                                echo $fname;
-                                       
-                                            
-                                        
-                                        $sql2 = "SELECT `sem_name` FROM `semester` WHERE id=$sem_id";
-                                        $result2=mysqli_query($conn,$sql2);
-                                        if(mysqli_num_rows($result2) > 0){
-                                            while($row2 = mysqli_fetch_assoc($result)){
-                                                $semName=$row2['sem_name'];
-                                                echo $semName;
-                                        
+                                        $fname=$row['faculty'];
+                                        $semName=$row['sem_name'];           
+            
 
                                         echo '<tr>
                                             <td>'.$id.'</td>
@@ -89,10 +73,6 @@
                                                 <a href="delete.php?deleteid='.$id.'"><button class="delete"><i class="uil uil-trash-alt"></i></button></a>
                                             </td>
                                         </tr>';
-                                                    }
-                                                }
-                                            }
-                                        }
                                     }
                                 }
                         ?>
