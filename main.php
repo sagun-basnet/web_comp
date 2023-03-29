@@ -14,14 +14,15 @@
     if(mysqli_num_rows($result)){
       $row= mysqli_fetch_assoc($result);
       $id=$row['id'];
+      $name=$row['name'];
 
       if($type==="Student"){
-        header("location:user.php?userid='.$id.'");
+        header("location:CURD/studentProfile.php?userName=$name");
       }
-      else if($type==="admin"){
-        header("location:./CURD/display.php?userid='.$id.'");
+      else if($type==="Admin"){
+        header("location:./CURD/dashboard.php?userid='.$id.'");
       }
-      else if($type ==="teacher"){
+      else if($type ==="Teacher"){
         header("location:teacher.php?userid='.$id.'");
       }
 
@@ -85,8 +86,8 @@
         <select require name="type">
           <option selected disabled hidden>-Select Role-</option>
           <option value="Student">Student</option>
-          <option value="teacher">Teacher</option>
-          <option value="admin">admin</option>
+          <option value="Teacher">Teacher</option>
+          <option value="Admin">Admin</option>
         </select>
       </div>
       <div class="btn_login">

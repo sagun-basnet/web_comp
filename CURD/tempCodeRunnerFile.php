@@ -1,0 +1,9 @@
+<?php
+$id=$row['id'];
+                         $name=$row['name'];
+                         $email=$row['email'];
+                         $faculty=$row['faculty'];
+                         $pass=$row['password'];
+                         $address=$row['address'];
+                         $gender=$row['gender'];
+                         $contact=$row['contact'];

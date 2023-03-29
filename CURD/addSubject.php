@@ -7,7 +7,7 @@
         $sem=$_POST['semDrop'];
         $fac=$_POST['facDropSub'];
 
-        $sql = "INSERT INTO `subject`(`sub_name`,`fac_id`, `sem_id`) VALUES ('$sname','$sem', '$fac')";
+        $sql = "INSERT INTO `subject`(`sub_name`,`fac_id`, `sem_id`) VALUES ('$sname','$fac', '$sem')";
 
         if(mysqli_query($conn,$sql)){
             header('location:addSubject.php');
@@ -15,7 +15,6 @@
         else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
-        mysqli_close($conn);
     }
 ?>
 <!DOCTYPE html>
@@ -69,8 +68,8 @@
                                             <td>'.$fname.'</td>
                                             <td>'.$semName.'</td>
                                             <td class="td_btn">
-                                                <a href="update.php?updateid='.$id.'"><button class="view"><i class="uil uil-edit"></i></button></a>
-                                                <a href="delete.php?deleteid='.$id.'"><button class="delete"><i class="uil uil-trash-alt"></i></button></a>
+                                                <a href="updateSubject.php?updateid='.$id.'"><button class="view"><i class="uil uil-edit"></i></button></a>
+                                                <a href="deleteSubject.php?deleteid='.$id.'"><button class="delete"><i class="uil uil-trash-alt"></i></button></a>
                                             </td>
                                         </tr>';
                                     }
@@ -98,19 +97,29 @@
                         ?>
                         <select require name="facDropSub">
                             <option selected disabled hidden>--Select Faculty--</option>
-                            <?php while($row = mysqli_fetch_assoc($result)){ ?>
-                            <option value="<?php echo $row['id']; ?>"><?php echo $row['faculty']; ?></option>
+                            <?php while($row = mysqli_fetch_assoc($result)){?>
+                            <option value="<?php echo $fac_id=$row['id']; ?>"><?php echo $row['faculty']; ?></option>
                             <?php } ?>
                         </select>
                         <?php
-                            $sql = "SELECT `id`, `sem_name` FROM `semester`";
+                            $sql = "SELECT `id`, `faculty` FROM `faculty`";
                             $result = mysqli_query($conn, $sql);
                         ?>
+
                         <select require name="semDrop">
                             <option selected disabled hidden>--Select Semester--</option>
-                            <?php while($row = mysqli_fetch_assoc($result)){ ?>
-                            <option value="<?php echo $row['id']; ?>"><?php echo $row['sem_name']; ?></option>
-                            <?php } ?>
+                            <?php
+                                while($row = mysqli_fetch_assoc($result)){
+                                    $fac_id=$row['id'];
+                                    echo "<h1>$fac_id</h1>";
+                                    
+                                    $semSql = "SELECT * FROM `semester` where fac_id = $fac_id";
+                                    $semResult = mysqli_query($conn, $semSql);
+                            ?>
+                                    <?php while($semrow = mysqli_fetch_assoc($semResult)){ ?>
+                                        <option value="<?php echo $semrow['id']; ?>"><?php echo $semrow['sem_name']; ?></option>
+                                        <?php } ?>
+                                <?php } ?> 
                         </select>
                         <input type="text" name="subName" placeholder="Enter Subject name"></input>
                         <div class="submitBtn">
@@ -126,7 +135,6 @@
     <script src="main.js"></script>
     <script src="assets/js/main.js" type="text/javascript"></script>
     <script src="../js/search.js" type="text/javascript"></script>
-    <!-- <script src="assets/js/replace.js"></script> -->
 </body>
 
 </html>

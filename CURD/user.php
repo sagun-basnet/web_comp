@@ -1,3 +1,7 @@
+<?php
+    include '../connect.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +27,7 @@
 
 <body>
     <header>
+    
         <div class="logo">
             <a href="dashboard.php">
                 <h2>Gyandarpan Academy</h2>
@@ -57,8 +62,18 @@
                         
                 </div>
             </div>
-            <div class="side">Welcome Admin &nbsp;<ion-icon name="chevron-down-outline"></ion-icon>
-            </div>
+            
+            <?php
+                if(isset($_GET['userName'])){
+                    $uname = $_GET['userName'];
+                    // $uid=$_GET['userid'];
+
+            ?>         
+                            <div class="side">Welcome <?php echo $uname;?> &nbsp;<ion-icon name="chevron-down-outline"></ion-icon>
+                            </div>
+            <?php
+                }
+            ?>
         </div>
     </header>
     <div class="navigation">
@@ -68,8 +83,8 @@
         <ul>
             <h2><span class="title"> MENU</span></h2>
             <li class="list">
-                <a href="dashboard.php">
-                    <span class="title">Dashboard</span>
+                <a href="studentProfile.php">
+                    <span class="title">Profile</span>
                 </a>
             </li>
             <li class="student dlist" onclick="dropdownlist(0)">
@@ -81,11 +96,11 @@
                     <li><a href="faculty.php">View Student</a></li>
                 </ul>
             </li>
-            <li class="list">
+            <!-- <li class="list">
                 <a href="DisplayTeacher.php">
                     <span class="title">Teacher</span>
                 </a>
-            </li>
+            </li> -->
             <li class="facultylist dlist" onclick="dropdownlist(1)">
                 <a href="#">
                     <span>Faculty and subject <i class="uil uil-angle-down"></i></span>
@@ -105,16 +120,16 @@
                     <span class="title">Result</span>
                 </a>
             </li>
-            <li class="list">
+            <!-- <li class="list">
                 <a href="notification.php">
                     <span class="title">Notification</span>
                 </a>
-            </li>
-            <li class="list">
+            </li> -->
+            <!-- <li class="list">
                 <a href="request.php">
                     <span class="title">Request</span>
                 </a>
-            </li>
+            </li> -->
             <li class="list">
                 <a href="changePass.php">
                     <span class="title">Change password</span>

@@ -1,6 +1,7 @@
 <?php
     include '../connect.php';
     include 'head.php';
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,15 +29,16 @@
     <div class="facultyContainer bca display">
         <div class="divMiddle">
             <form action="" method="POST">
+                <!-- <select name="semesterName" id="sem" onchange="this.form.submit();"> -->
                 <select name="semesterName" id="sem">
-                    <option value="1st" selected>First Semester</option>
-                    <option value="2st">Second Semester</option>
-                    <option value="3st">Third Semester</option>
-                    <option value="4st">Forth Semester</option>
-                    <option value="5st">Fifth Semester</option>
-                    <option value="6st">Sixth Semester</option>
-                    <option value="7st">Seventh Semester</option>
-                    <option value="8st">Eigth Semester</option>
+                    <option value="1st">First Semester</option>
+                    <option value="2nd">Second Semester</option>
+                    <option value="3rd">Third Semester</option>
+                    <option value="4th" selected>Forth Semester</option>
+                    <option value="5th">Fifth Semester</option>
+                    <option value="6th">Sixth Semester</option>
+                    <option value="7th">Seventh Semester</option>
+                    <option value="8th">Eigth Semester</option>
                 </select>
             </form>
             <div class="semTitle">
@@ -67,6 +69,13 @@
                     </thead>
                     <tbody id="table-data">
                         <?php
+                            //  if(isset($_POST['semesterName'])){
+                            //     $semNo = $_POST['semesterName'];
+                            //     echo "<h1>$semNo</h1>";
+                            // }
+                        
+                               
+                                
                                 $sql = "Select * from `registered` where faculty='BCA' ORDER BY name ASC";
                                 $result=mysqli_query($conn,$sql);
                                 $index=0;
@@ -101,7 +110,7 @@
                                     }
                                 }
                         ?>
-                    </tbody>
+                     </tbody>
 
                 </table>
                 <div id="noData" class="noData">

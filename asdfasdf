@@ -1,35 +1,54 @@
-.divMiddle .search_container{
-    width: 100%;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-}
-.divMiddle .search_container input{
-    width: 16rem;
-    background: transparent;
-    height: 2.6rem;
-    border: none;
-    border-bottom: 2px solid #ffffffcc;
-    border-radius: 0.4rem;
-    padding: 1.2rem;
-    margin-right: 1rem;
-    color: #ffffffcc;
-    font-size: 1.2rem;
-    font-weight: bolder;
-    text-align: center;
-}
-.divMiddle .search_container i{
-    font-size: 2rem;
-    color: rgb(131, 131, 131);
-    font-weight: bolder;
-    margin-right: 0.6rem;
-}
-.divMiddle .search_container button{
-    height: 2.4rem;
-    width: 5rem;
-    background-color: #0D1F2D;
-    color: #ffffffcc;
-    font-size: 1rem;
-    border: none;
-    border-radius: 0.4rem;
-}
+<?php
+                            if(isset($_POST['facDropSub'])){
+                                $fac_id = $_POST['facDropSub'];
+                                // echo "<h1>'.$fac_id.'</h1>";
+                                $semSql = "SELECT * FROM `semester` where fac_id = $fac_id";
+                                $semResult = mysqli_query($conn, $semSql);
+                            
+                        ?>
+                        
+                        <select require name="semDrop">
+                            <option selected disabled hidden>--Select Semester/Year--</option>
+                            <?php while($semrow = mysqli_fetch_assoc($semResult)){ ?>
+                            <option value="<?php echo $semrow['id']; ?>"><?php echo $semrow['sem_name']; ?></option>
+                            <?php } ?>
+                        </select>
+                        <?php } ?>
+
+
+
+
+
+
+                        <?php
+                                    $sql = "SELECT * FROM `faculty`";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    if ($result) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $id = $row['id'];
+                                            $fname = $row['faculty'];
+                                            $ftype = $row['type'];
+
+                                            // Query for semester data
+                                            $semSql = "SELECT * FROM `semester` where fac_id=$id";
+                                            $semResult = mysqli_query($conn, $semSql);
+
+                                            // Construct options for select dropdown
+                                            $options = "";
+                                            if ($semResult) {
+                                                while ($semRow = mysqli_fetch_assoc($semResult)) {
+                                                    $options .= '<option value="' . $semRow['id'] . '">' . $semRow['sem_name'] . '</option>';
+                                                }
+                                            }
+
+                                            // Echo table row
+                                            echo '
+                                            <select require name="semDrop">
+                                            <option selected disabled hidden>--Select Semester/Year--</option>
+                                            ' . $options . '
+                                            </select>
+                                            ';
+                                        }
+                                    }
+                                ?>

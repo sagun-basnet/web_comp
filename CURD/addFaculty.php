@@ -57,6 +57,7 @@
                                 <tr>
                                     <th scope="col">FId</th>
                                     <th scope="col">Faculty</th>
+                                    <th scope="col">Semester</th>
                                     <th scope="col">Type</th>
                                     <th class="action" scope="col">Action</th>
                                 </tr>
@@ -64,26 +65,43 @@
                             </thead>
                             <tbody id="table-data">
                                 <?php
-                                $sql = "Select * from `faculty`";
-                                $result=mysqli_query($conn,$sql);
-                                // $index=0;
-                                
-                                if($result){
-                                    while($row = mysqli_fetch_assoc($result)){
-                                        $id=$row['id'];
-                                        $fname=$row['faculty'];
-                                        $ftype=$row['type'];
-                                        echo '<tr>
-                                            <td>'.$id.'</td>
-                                            <td>'.$fname.'</td>
-                                            <td>'.$ftype.'</td>
-                                            <td class="td_btn">
-                                                <a href="deleteFaculty.php?deleteid='.$id.'"><button class="delete"><i class="uil uil-trash-alt"></i></button></a>
-                                            </td>
-                                        </tr>';
+                                    $sql = "SELECT * FROM `faculty`";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    if ($result) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $id = $row['id'];
+                                            $fname = $row['faculty'];
+                                            $ftype = $row['type'];
+
+                                            // Query for semester data
+                                            $semSql = "SELECT * FROM `semester` where fac_id=$id";
+                                            $semResult = mysqli_query($conn, $semSql);
+
+                                            // Construct options for select dropdown
+                                            $options = "";
+                                            if ($semResult) {
+                                                while ($semRow = mysqli_fetch_assoc($semResult)) {
+                                                    $options .= '<option value="' . $semRow['id'] . '">' . $semRow['sem_name'] . '</option>';
+                                                }
+                                            }
+
+                                            // Echo table row
+                                            echo '<tr>
+                                                    <td>' . $id . '</td>
+                                                    <td>' . $fname . '</td>
+                                                    <td>
+                                                        <select class="semesterDrop">' . $options . '</select>
+                                                    </td>
+                                                    <td>' . $ftype . '</td>
+                                                    <td class="td_btn">
+                                                        <a href="deleteFaculty.php?deleteid=' . $id . '"><button class="delete"><i class="uil uil-trash-alt"></i></button></a>
+                                                    </td>
+                                                </tr>';
+                                        }
                                     }
-                                }
-                        ?>
+                                ?>
+
                             </tbody>
                         </table>
                         <div id="noData" class="noData">
@@ -119,7 +137,7 @@
                             $result = mysqli_query($conn, $sql);
                         ?>
                         <select require name="SemesterDropFac">
-                            <option selected disabled hidden>--Select Faculty--</option>
+                            <option selected disabled hidden>--Select Semester/Year--</option>
                             <?php while($row = mysqli_fetch_assoc($result)){ ?>
                             <option value="<?php echo $row['id']; ?>"><?php echo $row['faculty']; ?></option>
                             <?php } ?>

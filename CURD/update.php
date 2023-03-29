@@ -60,7 +60,7 @@
     <div id="reg_formDiv">
         <form action="" method="POST">
 
-            <h2>Signup</h2>
+            <h2>Update</h2>
             <div class="names gap ">
                 <input type="text" placeholder="First name" name="fname" value="<?php echo $fname?>">
                 <input type="text" placeholder="Last name" name="lname" value="<?php echo $lname?>">

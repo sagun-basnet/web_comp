@@ -10,7 +10,7 @@
         $sql="DELETE FROM `registration` WHERE id=$id";
         mysqli_query($conn, $sql);
         
-        $sql="INSERT INTO `login` (email, password, type) SELECT email, password, 'Student' FROM `registered` WHERE id=$last_inserted_id";
+        $sql="INSERT INTO `login` (email, password, name, type) SELECT email, password, name, 'Student' FROM `registered` WHERE id=$last_inserted_id";
         mysqli_query($conn, $sql);
 
         header('location:request.php');
