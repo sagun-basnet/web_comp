@@ -1,3 +1,12 @@
+<?php
+    session_start(); // start a new session or resume an existing one
+
+    if(!isset($_SESSION['uname']) || !isset($_SESSION['pass']) || !isset($_SESSION['type'])){
+      // if the user is not logged in, redirect to the login page
+      header("Location: main.php");
+      exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +66,10 @@
                         
                 </div>
             </div>
-            <div class="side">Welcome Admin &nbsp;<ion-icon name="chevron-down-outline"></ion-icon>
+            <div onclick="logoutDrop()" class="side">Welcome Admin &nbsp;<ion-icon name="chevron-down-outline"></ion-icon>
+            </div>
+            <div class="logoutDiv">
+                <a class="logoutLink" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Logout</a>
             </div>
         </div>
     </header>

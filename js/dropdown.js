@@ -22,3 +22,13 @@ function notiDropdownlist(){
         dives.style.display = 'none'
     }
 }
+function logoutDrop(){
+    const logoutDiv = document.querySelector('.logoutDiv');
+    if(logoutDiv.style.display === 'none'){
+        logoutDiv.style.display = 'grid';
+        // dives.style.height = '22rem';
+    }
+    else{
+        logoutDiv.style.display = 'none'
+    }
+}

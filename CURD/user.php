@@ -1,4 +1,13 @@
 <?php
+    session_start(); // start a new session or resume an existing one
+
+    if(!isset($_SESSION['uname']) || !isset($_SESSION['pass']) || !isset($_SESSION['type'])){
+      // if the user is not logged in, redirect to the login page
+      header("Location: main.php");
+      exit();
+    }
+?>
+<?php
     include '../connect.php';
 ?>
 
@@ -66,11 +75,14 @@
             <?php
                 if(isset($_GET['userName'])){
                     $uname = $_GET['userName'];
-                    // $uid=$_GET['userid'];
 
             ?>         
-                            <div class="side">Welcome <?php echo $uname;?> &nbsp;<ion-icon name="chevron-down-outline"></ion-icon>
+                            <div onclick="logoutDrop()" class="side">Welcome <?php echo $uname;?> &nbsp;<ion-icon name="chevron-down-outline"></ion-icon>
                             </div>
+                            <div class="logoutDiv">
+                                <a class="logoutLink" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Logout</a>
+                            </div>
+            
             <?php
                 }
             ?>
@@ -83,24 +95,14 @@
         <ul>
             <h2><span class="title"> MENU</span></h2>
             <li class="list">
-                <a href="studentProfile.php">
-                    <span class="title">Profile</span>
-                </a>
+                <?php
+                    echo '
+                        <a href="studentProfile.php?userName='.$uname.'">
+                            <span class="title">Profile</span>
+                        </a>
+                    ';
+                ?>
             </li>
-            <li class="student dlist" onclick="dropdownlist(0)">
-                <a href="#">
-                    <span>Student <i class="uil uil-angle-down"></i></span>
-                </a>
-                <ul class="dropdown">
-                    <li><a href="display.php">Add Student</a></li>
-                    <li><a href="faculty.php">View Student</a></li>
-                </ul>
-            </li>
-            <!-- <li class="list">
-                <a href="DisplayTeacher.php">
-                    <span class="title">Teacher</span>
-                </a>
-            </li> -->
             <li class="facultylist dlist" onclick="dropdownlist(1)">
                 <a href="#">
                     <span>Faculty and subject <i class="uil uil-angle-down"></i></span>
@@ -116,22 +118,19 @@
                 </a>
             </li>
             <li class="list">
-                <a href="result.php">
+            <?php
+                    echo '
+                        <a href="studentResult.php?userName='.$uname.'">
+                            <span class="title">Result</span>
+                        </a>
+                    ';
+                ?>
+                <!-- <a href="result.php">
                     <span class="title">Result</span>
-                </a>
+                </a> -->
             </li>
-            <!-- <li class="list">
-                <a href="notification.php">
-                    <span class="title">Notification</span>
-                </a>
-            </li> -->
-            <!-- <li class="list">
-                <a href="request.php">
-                    <span class="title">Request</span>
-                </a>
-            </li> -->
             <li class="list">
-                <a href="changePass.php">
+                <a href="stdChangepass.php">
                     <span class="title">Change password</span>
                 </a>
             </li>

@@ -259,3 +259,21 @@ main.active{
     left: 50px;
     transition: 0.5s;
 }
+.logoutDiv{
+    position: absolute;
+    border: 0.5px solid white;
+    right: 1.6rem;
+    top: 3rem;
+    width: 10rem;
+    display: none;
+    place-items: center;
+    background-color: var(--bg-color-1);
+    padding: 0.3rem;
+}
+.logoutDiv a{
+    color: var(--white-color);
+}
+.logoutDiv a:hover{
+    transition: var(--transistion);
+    color: red;
+}

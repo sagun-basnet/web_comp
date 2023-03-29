@@ -1,38 +1,42 @@
 <?php
-  include 'connect.php';
+session_start(); // start a new session or resume an existing one
 
+if(isset($_POST['submit'])){
+  include 'connect.php'; // include code to establish database connection
 
-  if(isset($_POST['submit'])){
-    $uname=$_POST['uname'];
-    $password=$_POST['pass'];
-    $type = $_POST['type'];
+  $uname=$_POST['uname'];
+  $password=$_POST['pass'];
+  $type = $_POST['type'];
 
-    $sql = "select * from `login` where email='{$uname}' AND password='{$password}' AND type='{$type}'";
+  $sql = "SELECT * FROM `login` WHERE email='{$uname}' AND password='{$password}' AND type='{$type}'";
+  $result=mysqli_query($conn,$sql);
 
-    $result=mysqli_query($conn,$sql);
+  if(mysqli_num_rows($result) > 0){
+    $row= mysqli_fetch_assoc($result);
 
-    if(mysqli_num_rows($result)){
-      $row= mysqli_fetch_assoc($result);
-      $id=$row['id'];
-      $name=$row['name'];
+    $_SESSION['uname'] = $uname; // store the username in a session variable
+    $_SESSION['pass'] = $password; // store the password in a session variable
+    $_SESSION['type'] = $type; // store the user type in a session variable
 
-      if($type==="Student"){
-        header("location:CURD/studentProfile.php?userName=$name");
-      }
-      else if($type==="Admin"){
-        header("location:./CURD/dashboard.php?userid='.$id.'");
-      }
-      else if($type ==="Teacher"){
-        header("location:teacher.php?userid='.$id.'");
-      }
-
-      exit();
+    if($type === "Student"){
+      header("Location: CURD/studentProfile.php?userName={$row['name']}");
     }
-    else{
-      echo "You Have Enter incorrect username or password";
-      exit();
+    else if($type === "Admin"){
+      $_SESSION['id'] = $row['id']; // store the user id in a session variable
+      header("Location: CURD/dashboard.php");
     }
+    else if($type === "Teacher"){
+      $_SESSION['id'] = $row['id']; // store the user id in a session variable
+      header("Location: teacher.php");
+    }
+
+    exit();
   }
+  else{
+    echo "You have entered incorrect username or password";
+    exit();
+  }
+}
 ?>
 
 
